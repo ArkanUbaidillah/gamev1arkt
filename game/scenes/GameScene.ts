@@ -169,7 +169,7 @@ export class GameScene extends Phaser.Scene {
       delay: 600,
       loop: true,
       callback: () => {
-        if (this.attackPressed || this.hero.name === "Sora") this.doAttack();
+        if (this.attackPressed) this.doAttack();
       },
     });
   }
