@@ -18,9 +18,6 @@ export default function GameOverModal({
   onRestart,
   onMenu,
 }: Props) {
-  const isGuest = typeof window !== "undefined"
-    ? new URLSearchParams(window.location.search).get("guest") === "1"
-    : false;
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -103,7 +100,7 @@ export default function GameOverModal({
           )}
         </div>
 
-        {!isGuest && !submitted && (
+        {!submitted && (
           <>
             <button
               onClick={submitScore}
@@ -116,15 +113,10 @@ export default function GameOverModal({
             {error && <p className="text-red-400 text-xs mb-2">{error}</p>}
           </>
         )}
-        {!isGuest && submitted && (
+        {submitted && (
           <div className="text-green-400 text-sm mb-4">
             Skor berhasil disimpan!
           </div>
-        )}
-        {isGuest && (
-          <p className="text-yellow-400 text-xs mb-4">
-            Login untuk menyimpan skor ke leaderboard!
-          </p>
         )}
 
         <div className="flex gap-2">

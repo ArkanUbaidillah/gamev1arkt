@@ -4,6 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "ARKTARENA",
   description: "Web-based Hero Battle Game",
+  icons: [{ rel: "icon", url: "/assets/heroes/nolan.png" }],
 };
 
 export const viewport: Viewport = {

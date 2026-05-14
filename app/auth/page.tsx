@@ -109,6 +109,7 @@ export default function AuthPage() {
               <input
                 type="password"
                 required
+                autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Minimal 6 karakter"
@@ -144,14 +145,7 @@ export default function AuthPage() {
             </button>
           </form>
 
-          <div className="mt-4 text-center">
-            <button
-              onClick={() => router.push("/game?guest=1")}
-              className="text-gray-500 hover:text-gray-300 text-xs transition"
-            >
-              atau main sebagai tamu
-            </button>
-          </div>
+
         </div>
       </div>
     </div>

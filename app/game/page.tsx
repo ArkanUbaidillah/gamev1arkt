@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import GameOverModal from "@/components/GameOverModal";
 import HeroSelection from "@/components/HeroSelection";
 import { supabase } from "@/lib/supabase";
@@ -14,25 +14,17 @@ type Stage = "hero-select" | "playing" | "game-over";
 
 export default function GamePage() {
   const router = useRouter();
-  const isGuest = useMemo(() => {
-    if (typeof window === "undefined") return false;
-    return new URLSearchParams(window.location.search).get("guest") === "1";
-  }, []);
   const [stage, setStage] = useState<Stage>("hero-select");
   const [selectedHero, setSelectedHero] = useState<Hero | null>(null);
   const [finalScore, setFinalScore] = useState(0);
   const [authChecked, setAuthChecked] = useState(false);
 
   useEffect(() => {
-    if (isGuest) {
-      setAuthChecked(true);
-      return;
-    }
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (!session) router.replace("/auth");
       else setAuthChecked(true);
     });
-  }, [router, isGuest]);
+  }, [router]);
 
   function handleHeroSelect(hero: Hero) {
     setSelectedHero(hero);

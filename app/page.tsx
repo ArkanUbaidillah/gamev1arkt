@@ -85,26 +85,16 @@ export default function HomePage() {
       ) : (
         <>
           <p className="text-gray-400 text-sm text-center max-w-xs">
-            Main tanpa akun atau login untuk simpan skor!
+            Login untuk bermain dan simpan skor!
           </p>
-          <div className="flex flex-col gap-3 w-full max-w-xs">
-            <button
-              onClick={() => router.push("/game?guest=1")}
-              className="bg-gray-800 hover:bg-gray-700 text-white font-bold
-                px-10 py-4 rounded-2xl text-lg uppercase tracking-widest transition
-                border border-gray-600 active:scale-95"
-            >
-              Main sebagai Tamu
-            </button>
-            <button
-              onClick={() => router.push("/auth")}
-              className="bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-black
-                px-10 py-4 rounded-2xl text-lg uppercase tracking-widest transition
-                shadow-2xl shadow-cyan-500/30 active:scale-95"
-            >
-              Login / Daftar
-            </button>
-          </div>
+          <button
+            onClick={() => router.push("/auth")}
+            className="bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-black
+              px-10 py-4 rounded-2xl text-lg uppercase tracking-widest transition
+              shadow-2xl shadow-cyan-500/30 active:scale-95"
+          >
+            Login / Daftar
+          </button>
           <Leaderboard />
         </>
       )}
